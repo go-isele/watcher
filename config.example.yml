@@ -1,0 +1,29 @@
+database:
+  type: mysql  # or sqlite, postgres, clickhouse
+  host: localhost
+  port: 3306
+  user: root
+  password: password
+  db: db_name
+
+
+files:
+  - /path/to/file1.log
+  - /path/to/file2.log
+  - /path/to/file3.log
+
+
+log_file_path: '/home/muli/tests/sample.log'  # Path to the sample .log filelog_rotation_frequency: 'custom'  # Log rotation frequency ('daily', 'weekly', 'hourly', 'custom')
+output_directory: '/home/muli/tests'
+log_rotation_interval: 60  # Custom rotation interval in hours (0.5 hours = 30 minutes = 30 seconds * 60)
+log_rotation_type: 'custom'
+max_log_file_size: 1024  # Maximum size of the log file in bytes (1 KB in this example)
+max_archived_log_files: 10  # Maximum number of archived log files to keep
+compression_pattern: zipfile.ZIP_DEFLATED  # Compression level for archived log files
+delete_after_compression: False
+
+
+directory_path: "/path/to/your/directory"
+max_age_days: 30
+max_size_bytes: 1048576  # Maximum size in bytes (e.g., 1 MB)
+
