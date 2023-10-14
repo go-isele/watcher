@@ -4,7 +4,6 @@ import time
 import logging
 import yaml
 
-# Configure logging to display messages on the console (stdout)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load the YAML configuration file
@@ -25,16 +24,13 @@ def remove_old_and_big_files(directory, max_age_days, max_size_bytes):
     # Get the current date
     current_date = datetime.datetime.now()
 
-    # Iterate through the files in the directory
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
 
-        # Check if it's a file and not a directory
         if os.path.isfile(file_path):
             # Get the file's last modification time
             file_mtime = datetime.datetime.fromtimestamp(os.path.getmtime(file_path))
 
-            # Calculate the age of the file in days
             age_days = (current_date - file_mtime).days
 
             # Check if the file is both old and exceeds the specified size

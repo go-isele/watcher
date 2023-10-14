@@ -27,8 +27,7 @@ rotation_frequency = config['log_rotation_type']  # 'daily', 'weekly', 'hourly',
 rotation_interval = config.get('log_rotation_interval', 5)  # Number of hours, default to 5 if not specified
 max_log_file_size = config['max_log_file_size']  # Maximum size of the log file in bytes
 output_directory = config.get('output_directory', '')  # Get the output directory from the configuration file
-delete_after_compression = config.get('delete_after_compression',
-                                      False)  # Check if the log file should be deleted after compression
+delete_after_compression = config.get('delete_after_compression', False)
 
 
 # Define the log rotation function
@@ -42,7 +41,6 @@ def rotate_log():
         if not is_log_archived(log_file_name):
             current_time = datetime.datetime.now().time()
 
-            # Determine if log rotation is needed based on frequency and interval
             rotation_needed = False
 
             if rotation_frequency == 'daily':
@@ -55,7 +53,7 @@ def rotate_log():
                 rotation_needed = current_time.minute == 0  # Rotate at the beginning of each hour
             elif rotation_frequency == 'custom':
                 current_hour = current_time.hour
-                rotation_needed = current_hour % rotation_interval == 0  # Rotate every 'rotation_interval' hours
+                rotation_needed = current_hour % rotation_interval == 0
 
             # Determine if compression will be applied and validate the compression pattern
             compression_pattern = config['compression_pattern']  # Compression pattern from config.yml
@@ -72,7 +70,6 @@ def rotate_log():
             # Create the zip file name based on the log file name and timestamp
             zip_file_name = f'{log_file_name}_{timestamp}.zip'
 
-            # Create a new file path for the archived log file
             archived_log_file_path = os.path.join(output_directory, zip_file_name)
 
             # Print information about log file size and compression status
