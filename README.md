@@ -1,7 +1,7 @@
 # Watcher for Servers
 
 This project includes several Python scripts for various tasks, including `cleaner.py`, `compresser.py`...`others soon`, 
-and a logging endpoint in `db_logger.py`. 
+and a api application in `api.py`(sample). 
 You can easily run these scripts using the provided Bash script, `run_script.sh` and passing the script name you want to run.
 ## Prerequisites
 
