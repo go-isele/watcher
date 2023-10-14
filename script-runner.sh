@@ -17,7 +17,7 @@ case "$script_name" in
     "cleaner.py" | "compressor.py")
         python "$script_name"
         ;;
-    "db_logger.py")
+    "api.py")
         # Run FastAPI application using uvicorn
         uvicorn main:app --host 0.0.0.0 --port 8000 --reload
         ;;
