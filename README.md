@@ -1,6 +1,6 @@
-# Log-Q
+# Watcher for Servers
 
-This script is designed to help you manage different pythons application by handling the Python installation, virtual environment setup, and running the application. Here's how the script works:
+This scripts is designed to help you manage different pythons application by handling the Python installation, virtual environment setup, and running the application. Here's how the script works:
 
 ## Prerequisites
 
