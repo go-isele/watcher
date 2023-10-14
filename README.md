@@ -11,19 +11,11 @@ This script is designed to help you manage different pythons application by hand
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/go-isele/log-Q.git
-   cd log-Q
-
-
-This Bash script is designed to automate the process of running a FastAPI application. It includes the following functionalities:
-
-1. Checking if Python 3 is installed.
-2. Creating and activating a virtual environment (if Python is not installed).
-3. Installing requirements from `requirements.txt` (optional).
-4. Running the python application api using `uvicorn`.
+   git clone https://github.com/go-isele/watcher.git
+   cd watcher
 
 ## Usage
 To run this script:
 ```bash
-./run.sh
+./script_runner.sh
 
