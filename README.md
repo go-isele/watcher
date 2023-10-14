@@ -1,7 +1,8 @@
 # Watcher for Servers
 
-This scripts is designed to help you manage different pythons application by handling the Python installation, virtual environment setup, and running the application. Here's how the script works:
-
+This project includes several Python scripts for various tasks, including `cleaner.py`, `compresser.py`...`others soon`, 
+and a logging endpoint in `db_logger.py`. 
+You can easily run these scripts using the provided Bash script, `run_script.sh` and passing the script name you want to run.
 ## Prerequisites
 
 - Ensure you have Python 3 installed on your system.
@@ -14,8 +15,9 @@ This scripts is designed to help you manage different pythons application by han
    git clone https://github.com/go-isele/watcher.git
    cd watcher
 
-## Usage
-To run this script:
+## Example Usage
+To run this the cleaner script:
 ```bash
-./script_runner.sh
+./script_runner.sh compresser.py
+
 

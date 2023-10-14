@@ -1,35 +1,31 @@
 #!/bin/bash
 
-# Change directory to the 'scripts' directory or exit if unsuccessful
-cd "$(dirname "$0")/scripts" || exit 1
+# Navigate to the scripts directory
+cd scripts || exit 1
 
-# Check if the script file path is provided as an argument
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <script_file_path>"
+# Get the script name as the first argument
+script_name="$1"
+
+# Check if a valid script name is provided
+if [ -z "$script_name" ]; then
+    echo "Error: Please provide a valid script name (cleaner.py, compresser.py, or db_logger.py)."
     exit 1
 fi
 
-# Get the script file path from the argument
-script_file_path="$1"
+# Check the provided script name and execute the corresponding Python script
+case "$script_name" in
+    "cleaner.py" | "compressor.py")
+        python "$script_name"
+        ;;
+    "db_logger.py")
+        # Run FastAPI application using uvicorn
+        uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+        ;;
+    *)
+        echo "Error: Invalid script name. Please provide a valid script name (cleaner.py, compresser.py, or db_logger.py)."
+        exit 1
+        ;;
+esac
 
-# Check if the script file exists
-if [ ! -f "$script_file_path" ]; then
-    echo "Error: Script file not found!"
-    exit 1
-fi
-
-# Check if the script is a FastAPI application (assuming it's in the format of 'uvicorn main:app')
-if grep -q "uvicorn main:app" "$script_file_path"; then
-    # Start the FastAPI application using uvicorn in the background
-    uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
-
-    # Run the Python script
-    python3 "$script_file_path"
-
-    # Optionally, you can add a command to stop the FastAPI application when the Python script exits
-    # For example, you can use 'pkill' to stop the uvicorn process:
-    # pkill -f "uvicorn main:app --host 0.0.0.0 --port 8000"
-else
-    # Run the non-API Python script
-    python3 "$script_file_path"
-fi
+# Exit the script
+exit 0
